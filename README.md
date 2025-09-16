@@ -14,6 +14,11 @@ OSMANI Taxi is a modern transportation service website built with React. It feat
 - Glassmorphism UI with neon gradients
 - Smooth animations and transitions
 
+## 🌐 Live Demo
+
+Check out the live version of the website:
+[https://edonis175.github.io/osmani](https://edonis175.github.io/osmani)
+
 ## 🛠️ Getting Started
 
 Follow these instructions to set up the project locally.
@@ -28,7 +33,7 @@ Follow these instructions to set up the project locally.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/osmani-taxi.git
+   git clone https://github.com/edonis175/osmani.git
    ```
 
 2. Navigate to the project directory:
@@ -39,7 +44,7 @@ Follow these instructions to set up the project locally.
 
 3. Install dependencies:
    ```bash
-   npm install or npm i
+   npm install
    ```
 
 ### Running the Application
@@ -83,13 +88,19 @@ To create a production build:
 npm run build
 ```
 
+To deploy to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 

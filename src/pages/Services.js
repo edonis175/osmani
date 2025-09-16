@@ -66,6 +66,17 @@ const AnimatedCounter = ({
 
 const Services = () => {
   const visibleItems = useScrollAnimation();
+  const [selectedService, setSelectedService] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [bookingInfo, setBookingInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    passengers: 1,
+  });
+
   const services = [
     {
       title: "Premium City Taxi",
@@ -156,7 +167,89 @@ const Services = () => {
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
       price: "€2.50/km",
     },
+    // New services
+    {
+      title: "Wedding Transportation",
+      description:
+        "Make your special day unforgettable with our elegant wedding transportation service. From bridal transfers to guest shuttles, we ensure everything runs smoothly.",
+      details: [
+        "Luxury fleet of premium vehicles",
+        "Professional chauffeurs in uniform",
+        "Flexible scheduling for ceremonies",
+        "Decorative vehicle options",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1511276975707-9d9d01d0b45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      price: "€200 per event",
+    },
+    {
+      title: "Medical Transport",
+      description:
+        "Reliable and comfortable transportation for medical appointments. Our vehicles are equipped to accommodate mobility needs with professional, compassionate drivers.",
+      details: [
+        "Wheelchair accessible vehicles",
+        "Trained medical support staff",
+        "Insurance billing assistance",
+        "24/7 emergency availability",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      price: "€35 per trip",
+    },
+    {
+      title: "Nightlife Service",
+      description:
+        "Safe and reliable transportation for your evening adventures. Our late-night service ensures you get home securely after nights out.",
+      details: [
+        "24/7 availability for nightlife",
+        "Discreet and professional service",
+        "Multiple pickup/drop-off points",
+        "Fixed pricing with no surprises",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1523978512162-48e0d3c217ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      price: "€25 per trip",
+    },
   ];
+
+  const openBookingPopup = (service) => {
+    setSelectedService(service);
+    setIsPopupOpen(true);
+  };
+
+  const closeBookingPopup = () => {
+    setIsPopupOpen(false);
+    setSelectedService(null);
+    setBookingInfo({
+      name: "",
+      email: "",
+      phone: "",
+      date: "",
+      time: "",
+      passengers: 1,
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setBookingInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitBooking = (e) => {
+    e.preventDefault();
+    // In a real app, you would send this data to your backend
+    console.log("Booking submitted:", {
+      service: selectedService,
+      bookingInfo,
+    });
+    alert(
+      `Thank you for booking ${selectedService.title}! We'll contact you shortly to confirm your reservation.`
+    );
+    closeBookingPopup();
+  };
 
   return (
     <div className="min-h-screen overflow-hidden">
@@ -202,7 +295,7 @@ const Services = () => {
             >
               <div className="group transform hover:scale-105 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-400 mb-1 sm:mb-2 group-hover:scale-110 transition-transform">
-                  <AnimatedCounter end={6} />
+                  <AnimatedCounter end={9} />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-300">
                   Premium Services
@@ -241,102 +334,125 @@ const Services = () => {
       </div>
 
       {/* Services Introduction Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-8">
-              Our Premium Transportation Services
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 relative inline-block">
+              <span className="relative z-10 text-black">
+                Our Premium Transportation Services
+              </span>
             </h2>
-            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
               At OSMANI Taxi, we've been providing exceptional transportation
               services throughout KOSOVA for over 15 years. Our commitment to
               excellence means every journey with us is comfortable, reliable,
               and tailored to your needs.
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-16">
-              <div className="lg:col-span-1 bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease transform hover:scale-105 flex flex-col">
-                <h3 className="text-3xl font-bold text-gray-800 mb-6">
-                  Professional Drivers
-                </h3>
-                <p className="text-gray-600 text-xl leading-relaxed mb-4">
-                  Our experienced, courteous drivers know the region well and
-                  prioritize your safety and comfort.
-                </p>
-                <p className="text-gray-600 text-lg leading-relaxed pt-4pb-6 flex-grow">
-                  All our drivers undergo rigorous background checks and
-                  professional training. They are fluent in multiple languages
-                  and committed to providing a premium travel experience. With
-                  real-time GPS tracking, you can monitor your journey and
-                  estimated arrival times.
-                </p>
-                <div className="mt-auto pt-4 flex justify-center">
-                  <img
-                    src={require("../assets/images/osmanileaf.png")}
-                    alt="OSMANI Leaf"
-                    className="h-16 w-auto"
-                  />
-                </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-1 bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ease transform hover:-translate-y-2 flex flex-col border border-white/30 group">
+              <div className="relative mb-6">
+                <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-full opacity-20 blur-xl"></div>
+                <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20 blur-xl"></div>
               </div>
-              <div className="lg:col-span-1 bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease transform hover:scale-105 flex flex-col">
-                <h3 className="text-3xl font-bold text-gray-800 mb-6">
-                  Punctual Service
-                </h3>
-                <p className="text-gray-600 text-xl leading-relaxed mb-4">
-                  We value your time with on-time pickups and reliable
-                  scheduling for all our services.
-                </p>
-                <p className="text-gray-600 text-lg leading-relaxed flex-grow">
-                  Our advanced booking system ensures your driver arrives
-                  exactly when promised. With traffic monitoring technology, we
-                  optimize routes in real-time to avoid delays. For airport
-                  transfers, we track your flight status and adjust pickup times
-                  accordingly to ensure seamless travel.
-                </p>
-                <div className="mt-auto pt-4 flex justify-center">
-                  <img
-                    src={require("../assets/images/osmanileaf.png")}
-                    alt="OSMANI Leaf"
-                    className="h-16 w-auto"
-                  />
-                </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-4 ">
+                Professional Drivers
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4 flex-grow">
+                Our experienced, courteous drivers know the region well and
+                prioritize your safety and comfort.
+              </p>
+              <p className="text-gray-600 leading-relaxed pb-6">
+                All our drivers undergo rigorous background checks and
+                professional training. They are fluent in multiple languages and
+                committed to providing a premium travel experience. With
+                real-time GPS tracking, you can monitor your journey and
+                estimated arrival times.
+              </p>
+              <div className="mt-auto pt-4 flex justify-center">
+                <img
+                  src={require("../assets/images/osmanileaf.png")}
+                  alt="OSMANI Leaf"
+                  className="h-16 w-auto"
+                />
               </div>
-              <div className="lg:col-span-1 bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease transform hover:scale-105 flex flex-col">
-                <h3 className="text-3xl font-bold text-gray-800 mb-6">
-                  Quality Vehicles
-                </h3>
-                <p className="text-gray-600 text-xl leading-relaxed mb-4">
-                  Our modern, well-maintained fleet ensures a comfortable and
-                  safe journey every time.
-                </p>
-                <p className="text-gray-600 text-lg leading-relaxed flex-grow">
-                  Our vehicles are serviced regularly and inspected for safety
-                  compliance. Each car features premium amenities including
-                  climate control, charging ports, and luxury seating. We offer
-                  a range of vehicle types from sedans to SUVs to accommodate
-                  your specific needs.
-                </p>
-                <div className="mt-auto pt-4 flex justify-center">
-                  <img
-                    src={require("../assets/images/osmanileaf.png")}
-                    alt="OSMANI Leaf"
-                    className="h-16 w-auto"
-                  />
-                </div>
+            </div>
+
+            <div className="lg:col-span-1 bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ease transform hover:-translate-y-2 flex flex-col border border-white/30 group">
+              <div className="relative mb-6">
+                <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 blur-xl"></div>
+                <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-20 blur-xl"></div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                Punctual Service
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4 flex-grow">
+                We value your time with on-time pickups and reliable scheduling
+                for all our services.
+              </p>
+              <p className="text-gray-600 leading-relaxed pb-6">
+                Our advanced booking system ensures your driver arrives exactly
+                when promised. With traffic monitoring technology, we optimize
+                routes in real-time to avoid delays. For airport transfers, we
+                track your flight status and adjust pickup times accordingly to
+                ensure seamless travel.
+              </p>
+              <div className="mt-auto pt-4 flex justify-center">
+                <img
+                  src={require("../assets/images/osmanileaf.png")}
+                  alt="OSMANI Leaf"
+                  className="h-16 w-auto"
+                />
+              </div>
+            </div>
+
+            <div className="lg:col-span-1 bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ease transform hover:-translate-y-2 flex flex-col border border-white/30 group">
+              <div className="relative mb-6">
+                <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-green-400 to-teal-500 rounded-full opacity-20 blur-xl"></div>
+                <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full opacity-20 blur-xl"></div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-4 ">
+                Quality Vehicles
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4 flex-grow">
+                Our modern, well-maintained fleet ensures a comfortable and safe
+                journey every time.
+              </p>
+              <p className="text-gray-600 leading-relaxed pb-6">
+                Our vehicles are serviced regularly and inspected for safety
+                compliance. Each car features premium amenities including
+                climate control, charging ports, and luxury seating. We offer a
+                range of vehicle types from sedans to SUVs to accommodate your
+                specific needs.
+              </p>
+              <div className="mt-auto pt-4 flex justify-center">
+                <img
+                  src={require("../assets/images/osmanileaf.png")}
+                  alt="OSMANI Leaf"
+                  className="h-16 w-auto "
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* All Services - Simplified */}
-      <section id="services-section" className="py-16 bg-gray-50">
+      {/* Services Section */}
+      <section
+        id="services-section"
+        className="py-20 bg-gradient-to-br from-gray-50 to-gray-100"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-6xl font-bold text-black mb-4">
-              Our Transportation Services
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 relative inline-block">
+              <span className="relative z-10 text-black">
+                Our Transportation Services
+              </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-5xl mx-auto">
-              Reliable, comfortable transportation for every occasion
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+              Discover our premium transportation solutions designed to elevate
+              your travel experience
             </p>
           </div>
 
@@ -344,33 +460,49 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+                className="group bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden border border-white/30 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
+                onClick={() => openBookingPopup(service)}
               >
-                <div className="text-4xl mb-4 text-center"></div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4 text-center">
-                  {service.description}
-                </p>
-                <ul className="mb-4 space-y-2">
-                  {service.details.slice(0, 4).map((detail, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-1">✓</span>
-                      <span className="text-gray-600">{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="font-semibold text-center text-gray-800 mt-4">
-                  {service.price}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute top-4 right-4 bg-orange-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {service.price}
+                  </div>
                 </div>
-                <div className="text-center mt-6">
-                  <Link
-                    to="/contact"
-                    className="inline-block bg-gray-800 text-white font-medium py-2 px-6 rounded-lg hover:bg-gray-700 transition-colors"
-                  >
-                    Book Now
-                  </Link>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.details.slice(0, 3).map((detail, i) => (
+                      <span
+                        key={i}
+                        className="bg-orange-50/80 backdrop-blur-sm text-orange-700 px-2 py-1 rounded-md text-xs"
+                      >
+                        {detail}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center mt-6">
+                    <button
+                      className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium py-2 px-4 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openBookingPopup(service);
+                      }}
+                    >
+                      Book Now
+                    </button>
+                    <button className="bg-white/30 backdrop-blur-sm text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-white/50 transition-all text-sm">
+                      Click for details
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -378,8 +510,100 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Booking Popup Modal */}
+      {isPopupOpen && selectedService && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div
+            className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative">
+              <button
+                onClick={closeBookingPopup}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md z-10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={selectedService.image}
+                  alt={selectedService.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-3xl font-bold text-gray-900">
+                    {selectedService.title}
+                  </h3>
+                  <span className="bg-orange-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-lg font-bold">
+                    {selectedService.price}
+                  </span>
+                </div>
+
+                <p className="text-gray-700 mb-6">
+                  {selectedService.description}
+                </p>
+
+                <div className="mb-6">
+                  <h4 className="text-xl font-bold text-gray-800 mb-3">
+                    Service Features
+                  </h4>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {selectedService.details.map((detail, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-green-500 mr-2 mt-1">✓</span>
+                        <span className="text-gray-700">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex justify-end gap-4 pt-4">
+                  <button
+                    type="button"
+                    onClick={closeBookingPopup}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50/80 backdrop-blur-sm transition-colors"
+                  >
+                    Close
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // In a real app, you would open a booking form here
+                      alert(
+                        `Booking ${selectedService.title}! In a complete implementation, this would open a booking form.`
+                      );
+                      closeBookingPopup();
+                    }}
+                    className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium rounded-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Simple CTA Section */}
-      <section className="py-16 bg-gray-800 text-white">
+      <section className="py-16 bg-gray-900 backdrop-blur-sm text-white mb-0.5">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Need Transportation?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -387,7 +611,7 @@ const Services = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3 px-8 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105 backdrop-blur-sm"
           >
             Book Your Ride
           </Link>

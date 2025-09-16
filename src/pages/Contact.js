@@ -114,25 +114,21 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: "📍",
       title: "Our Premium Office",
       details: ["Rr. Agim Ramadani, Vushtrri 42000", "KOSOVA"],
       gradient: "from-red-500 to-pink-400",
     },
     {
-      icon: "📞",
       title: "24/7 Hotline",
       details: ["+383 44 123 456", "+383 44 789 012"],
       gradient: "from-green-500 to-emerald-400",
     },
     {
-      icon: "✉️",
       title: "Email Support",
       details: ["info@osmanitaxi.com", "bookings@osmanitaxi.com"],
       gradient: "from-blue-500 to-cyan-400",
     },
     {
-      icon: "⏰",
       title: "Always Available",
       details: ["24 hours, 7 days a week", "Never closed"],
       gradient: "from-purple-500 to-pink-400",
@@ -376,12 +372,12 @@ const Contact = () => {
       >
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center bg-fixed "
           style={{
             backgroundImage: `url(${require("../assets/images/Carbanner.jpg")})`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 "></div>
         </div>
 
         {/* Hero Content */}
@@ -427,13 +423,14 @@ const Contact = () => {
               style={getAnimationStyle(0)}
             >
               <div
-                className={`bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 ${getAnimationClasses(
+                className={`bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 hover:shadow-3xl transition-all duration-500 transform ${getAnimationClasses(
                   "left",
                   visibleItems.includes("contact-form"),
                   0
                 )}`}
               >
-                <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 rounded-t-3xl"></div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mt-4">
                   Send us a Message
                 </h2>
                 <p className="text-gray-600 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
@@ -459,7 +456,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg backdrop-blur-sm bg-white/50"
                       placeholder="Your full name"
                     />
                   </div>
@@ -479,7 +476,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg"
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg backdrop-blur-sm bg-white/50"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -498,7 +495,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg"
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-base sm:text-lg backdrop-blur-sm bg-white/50"
                         placeholder="+383 44 123 456"
                       />
                     </div>
@@ -518,7 +515,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows="6"
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-lg resize-none"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-300 text-lg resize-none backdrop-blur-sm bg-white/50"
                       placeholder="How can we help you today?"
                     ></textarea>
                   </div>
@@ -539,13 +536,12 @@ const Contact = () => {
                           className="sr-only"
                         />
                         <div
-                          className={`flex items-center justify-center p-4 rounded-2xl border-2 transition-all duration-300 ${
+                          className={`flex items-center justify-center p-4 rounded-2xl border-2 transition-all duration-300 backdrop-blur-sm hover:bg-gray-200 ${
                             formData.paymentMethod === "cash"
-                              ? "border-yellow-500 bg-yellow-50 text-yellow-700"
-                              : "border-gray-200 bg-white text-gray-700 hover:border-yellow-300"
+                              ? "bg-gray-200"
+                              : "bg-white/50"
                           }`}
                         >
-                          <span className="text-2xl mr-3">💵</span>
                           <span className="font-semibold">Cash</span>
                         </div>
                       </label>
@@ -560,13 +556,12 @@ const Contact = () => {
                           className="sr-only"
                         />
                         <div
-                          className={`flex items-center justify-center p-4 rounded-2xl border-2 transition-all duration-300 ${
+                          className={`flex items-center justify-center p-4 rounded-2xl border-2 transition-all duration-300 backdrop-blur-sm hover:bg-gray-200 ${
                             formData.paymentMethod === "card"
-                              ? "border-yellow-500 bg-yellow-50 text-yellow-700"
-                              : "border-gray-200 bg-white text-gray-700 hover:border-yellow-300"
+                              ? "bg-gray-200"
+                              : "bg-white/50"
                           }`}
                         >
-                          <span className="text-2xl mr-3">💳</span>
                           <span className="font-semibold">Card</span>
                         </div>
                       </label>
@@ -575,7 +570,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="group w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-5 px-8 rounded-2xl text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                    className="group w-full bg-gradient-to-r from-yellow-600 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-5 px-8 rounded-2xl text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-sm"
                   >
                     <span className="flex items-center justify-center">
                       Send Message
@@ -609,11 +604,35 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+              {/* Map Section */}
+              <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+                <h3 className="text-2xl font-bold mb-6 text-gray-800">
+                  Service Areas
+                </h3>
+                <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
+                  {/* Google Maps Embed */}
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.373291516093!2d20.965491315429688!3d42.79906997913029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13536bce97295987%3A0x8e4b9c7c6e1d9e0!2sVushtrri!5e0!3m2!1sen!2s!4v1650000000000!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="OSMANI Taxi Service Areas"
+                  ></iframe>
+                </div>
+                <p className="text-gray-600 text-center">
+                  Serving all major cities in Kosovo with premium transportation
+                </p>
+              </div>
+
+              {/* Contact Info Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {contactInfo.map((info, index) => (
                   <div
                     key={index}
-                    className={`group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 overflow-hidden scroll-animate ${getAnimationClasses(
+                    className={`group bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden scroll-animate transform hover:scale-105 ${getAnimationClasses(
                       "right",
                       visibleItems.includes(`contact-info-${index}`),
                       index * 200
@@ -622,30 +641,21 @@ const Contact = () => {
                     style={getAnimationStyle(index * 200)}
                   >
                     {/* Background Gradient on Hover */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${info.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                    ></div>
+                    <div className={`absolute inset-0 `}></div>
 
                     <div className="relative z-10">
-                      <div className="flex items-start">
-                        <div className="text-4xl mr-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
-                          {info.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-600 group-hover:bg-clip-text transition-all duration-300">
-                            {info.title}
-                          </h3>
-                          <div className="space-y-1">
-                            {info.details.map((detail, i) => (
-                              <p
-                                key={i}
-                                className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 font-medium"
-                              >
-                                {detail}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
+                      <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:bg-gradient-to-r group-hover:from-gray-880 group-hover:to-gray-600 group-hover:bg-clip-text transition-all duration-300">
+                        {info.title}
+                      </h3>
+                      <div className="space-y-1">
+                        {info.details.map((detail, i) => (
+                          <p
+                            key={i}
+                            className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 font-medium"
+                          >
+                            {detail}
+                          </p>
+                        ))}
                       </div>
                     </div>
 
@@ -667,7 +677,7 @@ const Contact = () => {
             backgroundImage: `url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
           }}
         >
-          <div className="absolute inset-0"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">

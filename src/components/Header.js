@@ -202,10 +202,8 @@ const NavLink = ({ to, label }) => {
   return (
     <Link
       to={to}
-      className={`text-lg px-2 py-2 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 ${
-        isActive
-          ? "text-yellow-500 bg-yellow-50"
-          : "text-black hover:text-orange-500 hover:bg-orange-50"
+      className={`text-lg px-4 py-2 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 font-medium ${
+        isActive ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
       }`}
     >
       {label}
@@ -220,10 +218,8 @@ const MobileNavLink = ({ to, label }) => {
   return (
     <Link
       to={to}
-      className={`block w-full text-center py-4 px-6 rounded-xl text-lg transition-all duration-300 ${
-        isActive
-          ? "text-yellow-500 bg-white font-bold shadow-lg border border-yellow-300"
-          : "text-gray-700 hover:text-orange-500 bg-white font-medium shadow-sm border border-gray-100 hover:shadow-md hover:border-orange-200"
+      className={`block w-full text-center py-4 px-6 rounded-xl text-lg transition-all duration-300 font-medium ${
+        isActive ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
       }`}
     >
       {label}
