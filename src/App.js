@@ -21,8 +21,19 @@ import PopularPlaces from "./pages/PopularPlaces";
 import RouteCalculator from "./pages/RouteCalculator";
 
 function App() {
+  const basename = (() => {
+    if (process.env.PUBLIC_URL) {
+      try {
+        return new URL(process.env.PUBLIC_URL).pathname || "/";
+      } catch (e) {
+        return "/";
+      }
+    }
+    return "/";
+  })();
+
   return (
-    <Router basename={process.env.PUBLIC_URL || "/"}>
+    <Router basename={basename}>
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow page-content">
