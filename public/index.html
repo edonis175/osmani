@@ -33,12 +33,13 @@
       // Rewrite redirected GitHub Pages URL back to the original SPA path
       (function () {
         var l = window.location;
-        if (l.search && l.search.indexOf('?p=') === 0) {
+        if (l.search && l.search.indexOf("?p=") === 0) {
           var params = new URLSearchParams(l.search);
-          var p = (params.get('p') || '').replace(/~slash~/g, '/');
-          var q = (params.get('q') || '').replace(/~and~/g, '&');
-          var newUrl = l.pathname.replace(/\/$/, '/') + p + (q ? ('?' + q) : '') + l.hash;
-          window.history.replaceState(null, '', newUrl);
+          var p = (params.get("p") || "").replace(/~slash~/g, "/");
+          var q = (params.get("q") || "").replace(/~and~/g, "&");
+          var newUrl =
+            l.pathname.replace(/\/$/, "/") + p + (q ? "?" + q : "") + l.hash;
+          window.history.replaceState(null, "", newUrl);
         }
       })();
     </script>
