@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/osmani/static/css/main.c5f94eaf.css",
+    "main.js": "/osmani/static/js/main.10b76a33.js",
+    "static/js/488.d80753d7.chunk.js": "/osmani/static/js/488.d80753d7.chunk.js",
+    "static/media/mitrovica.jpeg": "/osmani/static/media/mitrovica.80cc0ca307388cb6be5b.jpeg",
+    "static/media/gjakova.jpg": "/osmani/static/media/gjakova.a1e72b4150c4f1358854.jpg",
+    "static/media/suhareka.jpg": "/osmani/static/media/suhareka.c9b552b1f6577ad18c15.jpg",
+    "static/media/prizren.jpg": "/osmani/static/media/prizren.a4c02a8480e104271d1f.jpg",
+    "static/media/gjilan.jpg": "/osmani/static/media/gjilan.3d5726fed5f1a2c4e5ee.jpg",
+    "static/media/ferizaj.jpg": "/osmani/static/media/ferizaj.ee191494a3f1391329a1.jpg",
+    "static/media/peja.jpg": "/osmani/static/media/peja.695b218f19b71b5a9eb8.jpg",
+    "static/media/vushtrri.jpg": "/osmani/static/media/vushtrri.b623b8cc63576e6b5eeb.jpg",
+    "static/media/podujeva.jpg": "/osmani/static/media/podujeva.5dffd666e456d52e1d1f.jpg",
+    "static/media/Carbanner.jpg": "/osmani/static/media/Carbanner.10ebabbf680a510d206b.jpg",
+    "static/media/prishtina.jpg": "/osmani/static/media/prishtina.fe0c3ce79767841e6f57.jpg",
+    "static/media/osmaniTlogo.png": "/osmani/static/media/osmaniTlogo.39de9e1175fe9aab69cd.png",
+    "static/media/osmanileaf.png": "/osmani/static/media/osmanileaf.5317ab89a3aa81baa079.png",
+    "index.html": "/osmani/index.html",
+    "main.c5f94eaf.css.map": "/osmani/static/css/main.c5f94eaf.css.map",
+    "main.10b76a33.js.map": "/osmani/static/js/main.10b76a33.js.map",
+    "488.d80753d7.chunk.js.map": "/osmani/static/js/488.d80753d7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5f94eaf.css",
+    "static/js/main.10b76a33.js"
+  ]
+}
