@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="OSMANI TAXI - Premium Transportation Services in KOSOVA" />
+    <title>OSMANI TAXI - Premium Transportation Services</title>
+    <script>
+      // Single Page App redirect for GitHub Pages
+      (function(l){
+        if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v){
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=');
+          });
+          if (q.p) {
+            var path = l.pathname.replace(/\/404\.html$/, '') + (q.p || '') + (q.q ? ('?' + q.q) : '') + l.hash;
+            l.replace(path);
+          }
+        }
+      })(window.location);
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+  </html>
+
+
