@@ -38,6 +38,7 @@ function App() {
         <Header />
         <main className="flex-grow page-content">
           <Routes>
+            <Route index element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -45,7 +46,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/popular-places" element={<PopularPlaces />} />
             <Route path="/route-calculator" element={<RouteCalculator />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
         <Footer />
