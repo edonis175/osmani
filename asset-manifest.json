@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/osmani/static/css/main.032b23d6.css",
-    "main.js": "/osmani/static/js/main.cc400d59.js",
+    "main.css": "/osmani/static/css/main.c5f94eaf.css",
+    "main.js": "/osmani/static/js/main.616df741.js",
     "static/js/488.d80753d7.chunk.js": "/osmani/static/js/488.d80753d7.chunk.js",
     "static/media/mitrovica.jpeg": "/osmani/static/media/mitrovica.80cc0ca307388cb6be5b.jpeg",
     "static/media/gjakova.jpg": "/osmani/static/media/gjakova.a1e72b4150c4f1358854.jpg",
@@ -17,12 +17,12 @@
     "static/media/osmaniTlogo.png": "/osmani/static/media/osmaniTlogo.39de9e1175fe9aab69cd.png",
     "static/media/osmanileaf.png": "/osmani/static/media/osmanileaf.5317ab89a3aa81baa079.png",
     "index.html": "/osmani/index.html",
-    "main.032b23d6.css.map": "/osmani/static/css/main.032b23d6.css.map",
-    "main.cc400d59.js.map": "/osmani/static/js/main.cc400d59.js.map",
+    "main.c5f94eaf.css.map": "/osmani/static/css/main.c5f94eaf.css.map",
+    "main.616df741.js.map": "/osmani/static/js/main.616df741.js.map",
     "488.d80753d7.chunk.js.map": "/osmani/static/js/488.d80753d7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.032b23d6.css",
-    "static/js/main.cc400d59.js"
+    "static/css/main.c5f94eaf.css",
+    "static/js/main.616df741.js"
   ]
 }
