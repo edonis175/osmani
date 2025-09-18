@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 
 // Import components
@@ -13,10 +18,11 @@ import Services from "./pages/Services";
 import Fleet from "./pages/Fleet";
 import Contact from "./pages/Contact";
 import PopularPlaces from "./pages/PopularPlaces";
+import RouteCalculator from "./pages/RouteCalculator";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL || "/"}>
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow page-content">
@@ -27,6 +33,8 @@ function App() {
             <Route path="/fleet" element={<Fleet />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/popular-places" element={<PopularPlaces />} />
+            <Route path="/route-calculator" element={<RouteCalculator />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

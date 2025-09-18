@@ -7,6 +7,7 @@ import {
 } from "../hooks/useScrollAnimation";
 import ScrollToTopButton from "../contexts/ScrollToTopButton";
 import ScrollDownButton from "../contexts/ScrollDownButton";
+import CarBanner from "../assets/images/Carbanner.jpg";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -120,7 +121,7 @@ const Home = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${require("../assets/images/Carbanner.jpg")})`,
+            backgroundImage: `url(${CarBanner})`,
           }}
         >
           <div
