@@ -19,10 +19,7 @@
           "//" +
           l.hostname +
           (l.port ? ":" + l.port : "") +
-          l.pathname
-            .split("/")
-            .slice(0, pathSegmentsToKeep)
-            .join("/") +
+          l.pathname.split("/").slice(0, pathSegmentsToKeep).join("/") +
           "/?p=" +
           l.pathname
             .split("/")
