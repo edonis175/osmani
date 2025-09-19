@@ -17,7 +17,7 @@ OSMANI Taxi is a modern transportation service website built with React. It feat
 ## 🌐 Live Demo
 
 Check out the live version of the website:
-[https://edonis175.github.io/osmani](https://edonis175.github.io/osmani)
+[https://edonis175.github.io/osmani](edonis175.github.io/osmani-taxi/)
 
 ## 🛠️ Getting Started
 
